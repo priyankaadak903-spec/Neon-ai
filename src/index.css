@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Space Grotesk", sans-serif;
+
+  --color-neon-purple: #9d50bb;
+  --color-neon-blue: #6e7ff3;
+  --color-neon-pink: #ff00de;
+  --color-neon-cyan: #00f2ff;
+  
+  --color-cyber-black: #0b0f1a;
+  --color-cyber-dark: #121826;
+  --color-cyber-glass: rgba(18, 24, 38, 0.7);
+}
+
+@layer base {
+  body {
+    @apply bg-cyber-black text-white font-sans;
+  }
+}
+
+@layer utilities {
+  .glass-main {
+    @apply bg-cyber-glass backdrop-blur-xl border border-white/10;
+  }
+  
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 hover:border-neon-blue/30 transition-all duration-500 ease-in-out;
+  }
+
+  .neon-glow-blue {
+    @apply shadow-[0_0_20px_rgba(110,127,243,0.3)];
+  }
+
+  .neon-glow-purple {
+    @apply shadow-[0_0_20px_rgba(157,80,187,0.3)];
+  }
+  
+  .neon-text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-purple via-neon-blue to-neon-cyan;
+  }
+
+  .matrix-bg {
+    mask-image: linear-gradient(to bottom, transparent, black, transparent);
+    animation: flow 20s linear infinite;
+  }
+
+  @keyframes flow {
+    from { transform: translateY(-50%); }
+    to { transform: translateY(0); }
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(110, 127, 243, 0.2);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 242, 255, 0.4);
+  }
+}
